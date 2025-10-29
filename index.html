@@ -2,9 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>The Archivist</title>
     
     <style>
@@ -14,10 +12,12 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            
+            /* This makes the body fill the screen without scrolling */
+            height: 100vh; 
             margin: 0;
             padding: 1rem;
-            box-sizing: border-box; /* Ensures padding doesn't break layout */
+            box-sizing: border-box; /* Includes padding in the 100vh height */
             
             /* Just for looks */
             background-color: #333;
@@ -27,14 +27,19 @@
         }
 
         .responsive-image {
-            /*
-             * This is the magic for responsiveness:
-             * 1. max-width: 100% - The image will never be wider than its container.
-             * 2. height: auto - The browser will automatically adjust the height
-             * to maintain the image's original aspect ratio.
+            /* * These rules work together to fit the image 
+             * inside the viewport without scrolling.
             */
+
+            /* 1. Never wider than its container */
             max-width: 100%;
-            height: auto;
+            
+            /* 2. (NEW) Never taller than 85% of the viewport's height */
+            /* This leaves room for the <h1> title */
+            max-height: 85vh; 
+
+            /* 3. Maintains the aspect ratio when scaling */
+            height: auto; 
             
             /* A few extras for a cleaner look */
             display: block;
